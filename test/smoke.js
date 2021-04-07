@@ -1,8 +1,10 @@
 var expect = require('chai').expect;
-var randomProduct = require('../endpoints/random_product');
-var login = require('../endpoints/login');
-var bidPrice = require('../endpoints/get_bid_price');
-var postBid = require('../endpoints/bid_post');
+var testData = require('../data/data');
+var randomProductAPI = require('../endpoints/random_product');
+var loginAPI = require('../endpoints/login');
+var bidPriceAPI = require('../endpoints/get_bid_price');
+var postBidAPI = require('../endpoints/bid_post');
+var helper = require('../endpoints/helper')
 
 
 describe('smoke test suit', () => {
@@ -11,29 +13,25 @@ describe('smoke test suit', () => {
     it('As a signed in user place the highest bid on a item', async () => {
 
         //POST method to auth/login to login using valid credential and get authentication token 
-        validToken = await login.getToken();
+        validToken = await loginAPI.getToken();
 
         //GET method to products/featured/random to choose which product to bid on 
-        productid = await randomProduct.getRandomProductID();
+        productid = await randomProductAPI.getRandomProductID();
 
         //GET method to bids/product to see what is the highest bid on the product 
-        bid = await bidPrice.getProductPrice(productid);
+        bid = await bidPriceAPI.getBid(productid);
 
         //Body that we need to send 
-        const bidRequest = {
-            "amount": bid + 1 ,
-            "productId": productid
-        };
+        bidRequest = await postBidAPI.postBody(bid, productid);
         
         //POST method to bids/add to send the bid to the product with an authentication token 
-        let postBidBody = await postBid.bidPost(validToken, bidRequest)
+        let postBidBody = await postBidAPI.bidPost(validToken, bidRequest);
 
         //Using chai BDD assertions we want to expect that our bid was successfull 
-        expect(postBidBody.productId).to.eq(productid);
-        expect(postBidBody.amount).to.eq(bid + 1);
+        await postBidAPI.expectBid(postBidBody, productid, bid + 1);
 
         //That we can see where out bid is send since the test is dynamic
-        console.log(postBidBody);
+        helper.showMe(postBidBody);
 
         });
 });
