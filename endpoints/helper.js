@@ -7,4 +7,4 @@ function showMe (something) {
 module.exports = {
     showMe
     
-    }
+    };

@@ -10,3 +10,11 @@ Add in package.json "test": "mocha --timeout 10000"
 
 Make a .env file where you will set your own credentials
 
+--------------------------------------------------------------------------------------
+
+Start test with npm test 
+
+or 
+
+npm test -- --grep 'name of the test'
+

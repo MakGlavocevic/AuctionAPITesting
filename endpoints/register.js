@@ -1,6 +1,5 @@
 const request = require('supertest');
 var expect = require('chai').expect;
-var chance = require('chance').Chance();
 var testData = require('../data/data');
 
 //POST method to create a account using random generated email
@@ -51,11 +50,10 @@ expectAccount = async (newAccount, var1, var2, var3) => {
 
 }
 
-
 module.exports = {
     registerAccount,
     expectAccount,
     registerInvalidAccount
     
 
-}
+};

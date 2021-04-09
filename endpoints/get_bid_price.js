@@ -1,7 +1,6 @@
-randomProductID = require('../endpoints/random_product');
+randomProductID = require('./products_random');
 var testData = require('../data/data');
 const request = require('supertest');
-var expect = require('chai').expect;
 
 //GET method to get the highest bid or incase that there are no bid available the starting price 
 getBid = async (productid) => {
@@ -21,8 +20,19 @@ getBid = async (productid) => {
       }
 };
 
+//GET method to get the starting price 
+getStartPrice = async (productid) => {
+
+        const startbid = await request(testData.apiLinks.baseURL)
+            .get(`products?product_id=${productid}&user_id=0`);
+
+        return startbid.body.startPrice;
+
+};
+
 module.exports = {
-    getBid
+    getBid,
+    getStartPrice
     
-    }
+    };
 

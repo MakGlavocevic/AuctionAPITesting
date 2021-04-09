@@ -7,10 +7,15 @@ apiLinks:{
   baseURL:'https://auction-abh-server.herokuapp.com/'
 },
 
-email:{
-  randomEmail: chance.email({domain: 'gmail.com'})
+emails:{
+  randomEmail: chance.email({domain: 'gmail.com'}),
+  email: {"email": process.env.TEST_USERNAME},
+  invalidEmail: {"email": "invalidemailformat"}
 },
 
+searchTerms:{
+invalidSearchTerm: 'thisitemdoesnotexist'
+},
 
 accountInfo:{
     "email": process.env.TEST_USERNAME,
@@ -35,9 +40,11 @@ endpoint:{
   category:'categories',
   randomProduct:'products/featured/random',
   bids: 'bids',
-  addBids:'bids/add'
+  addBids:'bids/add',
+  newProducts:'products/new',
+  forgotPassword:'auth/forgot_password',
+  subcategories:'subcategories'
 }
+};
 
-}
-
-module.exports = testData
+module.exports = testData;
