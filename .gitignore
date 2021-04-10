@@ -1,6 +1,4 @@
 .env
-package.json
-package-lock.json
 node_modules
 random.js
 categories.js

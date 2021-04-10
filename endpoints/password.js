@@ -26,9 +26,18 @@ invalidForgotPassword = async () => {
 
 //Using chai BDD assertions we want to expect that our forgot password action was successfull 
 expectForgotPassword = async (forgotPasswordBody) => {
-
-    expect(forgotPasswordBody).to.eq("We have already sent you an email with a link to reset your password in the last 24 hours. Please check your inbox." || "We have already sent you an email with a link to reset your password in the last 24 hours. Please check your inbox.");
     
+    if (forgotPasswordBody = "We sent you an email with a link to reset your password. The link will expire after 24 hours.") {
+      
+        expect(forgotPasswordBody).to.eq("We sent you an email with a link to reset your password. The link will expire after 24 hours.");
+
+      } else {
+
+        expect(forgotPasswordBody).to.eq("We have already sent you an email with a link to reset your password in the last 24 hours. Please check your inbox.");
+
+      }
+
+
 };
 
 module.exports = {
