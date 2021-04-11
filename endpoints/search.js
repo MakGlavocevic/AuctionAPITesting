@@ -3,7 +3,7 @@ const request = require('supertest');
 var expect = require('chai').expect;
 
 //GET method to products/search to search for a query 
-searchProduct = async (searchTerm) => {
+const searchProduct = async (searchTerm) => {
 
     const searchres = await request(testData.apiLinks.baseURL)
         .get(`products/search?page=0&query=${searchTerm}`)
@@ -17,7 +17,7 @@ searchProduct = async (searchTerm) => {
 };
 
 //GET method to products/search to search for a invalid query 
-searchInvalidProduct = async (searchTerm) => {
+const searchInvalidProduct = async (searchTerm) => {
 
     const searchinvalidres = await request(testData.apiLinks.baseURL)
         .get(`products/search?page=0&query=${searchTerm}`)
@@ -37,14 +37,14 @@ function findItem () {
 };
 
 //Using chai BDD assertions we want to expect that our search was successfull
-expectSearch = async (searchResultBody, searchItem) => {
+const expectSearch = async (searchResultBody, searchItem) => {
 
     expect(searchResultBody.products[0].name).to.eq(searchItem);
     
 };
 
 //Using chai BDD assertions we want to expect that our search was empty
-expectInvalidSearch = async (resultInvalidBody) => {
+const expectInvalidSearch = async (resultInvalidBody) => {
 
     expect(resultInvalidBody.products).to.be.empty;
     

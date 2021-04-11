@@ -6,6 +6,7 @@ var helper = require('../endpoints/helper');
 
 
 describe('Smoke test suit: TS-001', () => {
+    let postBidBody;
 
     before( async () => {
 
@@ -13,6 +14,13 @@ describe('Smoke test suit: TS-001', () => {
          validToken = await loginAPI.getToken();
 
      });
+
+     after( async () => {
+
+         //That we can see where out bid is send since the test is dynamic
+         helper.showMe(postBidBody);
+
+    });
    
     it('As a signed in user place the highest bid on a item: ST-001', async () => {
 
@@ -26,13 +34,10 @@ describe('Smoke test suit: TS-001', () => {
          bidRequest = await helper.postValidBidBody(bid, productid);
         
          //POST method to bids/add to send the bid to the product with an authentication token 
-         let postBidBody = await postBidAPI.bidPost(validToken, bidRequest);
+         postBidBody = await postBidAPI.bidPost(validToken, bidRequest);
 
          //Using chai BDD assertions we want to expect that our bid was successfull 
          await postBidAPI.expectBid(postBidBody, productid, bid + 1);
-
-         //That we can see where out bid is send since the test is dynamic
-         helper.showMe(postBidBody);
 
         });
 });

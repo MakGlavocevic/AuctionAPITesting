@@ -3,7 +3,7 @@ const request = require('supertest');
 var expect = require('chai').expect;
 
 //POST method to auth/forgot_password to send out email and get response body
-forgotPassword = async () => {
+const forgotPassword = async () => {
 
     const respassword = await request(testData.apiLinks.baseURL)
             .post(testData.endpoint.forgotPassword)
@@ -15,7 +15,7 @@ forgotPassword = async () => {
 };
 
 //POST method to auth/forgot_password to send out invalid email and expect server status 400
-invalidForgotPassword = async () => {
+const invalidForgotPassword = async () => {
 
     const resinvalidpassword = await request(testData.apiLinks.baseURL)
             .post(testData.endpoint.forgotPassword)
@@ -25,7 +25,7 @@ invalidForgotPassword = async () => {
 };
 
 //Using chai BDD assertions we want to expect that our forgot password action was successfull 
-expectForgotPassword = async (forgotPasswordBody) => {
+const expectForgotPassword = async (forgotPasswordBody) => {
     
     if (forgotPasswordBody = testData.applicationMessages.weHaveSentEmail) {
       

@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 var testData = require('../data/data');
 
 //POST method to create a account using random generated email
-registerAccount = async (email) => {
+const registerAccount = async (email) => {
     
     const regdata = {
         "email": email,
@@ -22,7 +22,7 @@ return registerres.body.person;
 };
 
 //POST method to create a account using invalid data in order to expect server status 400 
-registerInvalidAccount = async () => {
+const registerInvalidAccount = async () => {
 
     const reginvaliddata = {
         "email": 'thisemailisnotvalid',
@@ -41,7 +41,7 @@ return registerinvalidres.body;
 };
 
 //Using chai BDD assertions we want to expect that our account creation was successfull 
-expectAccount = async (newAccount, firstName, lastName, accountEmail) => {
+const expectAccount = async (newAccount, firstName, lastName, accountEmail) => {
 
     expect(newAccount.firstName).to.be.eq(firstName);
     expect(newAccount.lastName).to.be.eq(lastName);

@@ -3,7 +3,7 @@ const request = require('supertest');
 var expect = require('chai').expect;
 
 //POST method to bids/add to send the bid to the product with an authentication token 
-bidPost = async (validToken, bidRequest) => {
+const bidPost = async (validToken, bidRequest) => {
 
     const addbidres = await request(testData.apiLinks.baseURL)
         .post(testData.endpoint.addBids)
@@ -16,7 +16,7 @@ return addbidres.body;
 };
 
 //POST method to bids/add to send the bid to the product without an authentication token 
-unauthorizedbidPost = async (bidRequest) => {
+const unauthorizedbidPost = async (bidRequest) => {
 
         await request(testData.apiLinks.baseURL)
         .post(testData.endpoint.addBids)
@@ -26,7 +26,7 @@ unauthorizedbidPost = async (bidRequest) => {
 };
 
 //POST method to bids/add to send the invalid bid to the product with an authentication token 
-invalidBidPost = async (validToken, bidRequest) => {
+const invalidBidPost = async (validToken, bidRequest) => {
 
         await request(testData.apiLinks.baseURL)
         .post(testData.endpoint.addBids)
@@ -37,7 +37,7 @@ invalidBidPost = async (validToken, bidRequest) => {
 };
 
 //Using chai BDD assertions we want to expect that our bid was successfull 
-expectBid = async (postBidBody, productid, bid) => {
+const expectBid = async (postBidBody, productid, bid) => {
 
     expect(postBidBody.productId).to.eq(productid);
     expect(postBidBody.amount).to.eq(bid);

@@ -2,7 +2,7 @@
  const request = require('supertest');
 
  //GET method to products/featured/random to choose which product to bid on 
- getRandomProductID = async () => {
+ const getRandomProductID = async () => {
 
      const productres = await request(testData.apiLinks.baseURL)
          .get(testData.endpoint.randomProduct)

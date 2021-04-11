@@ -3,7 +3,7 @@ const request = require('supertest');
 var expect = require('chai').expect;
 
 //POST method to auth/login to login using valid credential and get authentication token 
-getToken = async () => {
+const getToken = async () => {
 
     const restoken = await request(testData.apiLinks.baseURL)
             .post(testData.endpoint.login)
@@ -15,7 +15,7 @@ getToken = async () => {
 };
 
 //POST method to auth/login to login using valid credential and get response body
-getValidLogin = async () => {
+const getValidLogin = async () => {
 
     const reslogin = await request(testData.apiLinks.baseURL)
             .post(testData.endpoint.login)
@@ -27,7 +27,7 @@ getValidLogin = async () => {
 };
 
 //POST method to auth/login to login using invalid credential in order to expect server status 400 
-getInvalidLogin = async () => {
+const getInvalidLogin = async () => {
 
     const resinvalidlogin = await request(testData.apiLinks.baseURL)
             .post(testData.endpoint.login)
@@ -39,7 +39,7 @@ getInvalidLogin = async () => {
 };
 
 //Using chai BDD assertions we want to expect that our login was successfull 
-expectValidLogin = async (accountLogin, accountid, firstName, lastName) => {
+const expectValidLogin = async (accountLogin, accountid, firstName, lastName) => {
 
     expect(accountLogin.id).to.be.eq(accountid);
     expect(accountLogin.firstName).to.be.eq(firstName);
