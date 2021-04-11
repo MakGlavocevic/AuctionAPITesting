@@ -44,33 +44,9 @@ expectBid = async (postBidBody, productid, bid) => {
     
 };
 
-//Our valid POST body
-function postBody (bid, productid) {
-
-    const bidRequest = {
-        "amount": bid + 1 ,
-        "productId": productid
-    };
-
-    return bidRequest
-};
-
-//Our invalid POST body
-function postInvalidBody (bid, productid) {
-
-    const bidRequest = {
-        "amount": bid - 1 ,
-        "productId": productid
-    };
-
-    return bidRequest
-};
-
 module.exports = {
     bidPost,
     expectBid,
-    postBody,
-    postInvalidBody,
     invalidBidPost,
     unauthorizedbidPost
 

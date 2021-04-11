@@ -4,7 +4,6 @@ var registerAPI = require('../endpoints/register');
 
 describe('Create an Account: TS-002', () => {
 
-   
     it('Create an account using valid information: RT-001', async () => {
 
          //Generate a random email for test purposes

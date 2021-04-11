@@ -33,7 +33,7 @@ function findItem () {
     items = Array('16GB DDR4 RAM', 'Gucci Bag', 'Leather Bag', 'LV Red Bag', 'Sunglasses', 'Apple Watch', 'Dell XPS', 'Boxing Gloves', 'Tennis Racquet');
     item = items[Math.floor(Math.random() * items.length)];
 
-    return item
+    return item;
 };
 
 //Using chai BDD assertions we want to expect that our search was successfull
@@ -46,7 +46,7 @@ expectSearch = async (searchResultBody, searchItem) => {
 //Using chai BDD assertions we want to expect that our search was empty
 expectInvalidSearch = async (resultInvalidBody) => {
 
-    expect(resultInvalidBody.products).to.be.empty
+    expect(resultInvalidBody.products).to.be.empty;
     
 };
 

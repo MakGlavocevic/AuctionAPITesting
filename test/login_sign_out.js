@@ -3,7 +3,6 @@ var loginAPI = require('../endpoints/login');
 
 describe('Login / Sign out: TS-008', () => {
 
-
     it('Login using valid credentials: RT-016', async () => {
 
          //POST method to auth/login to send valid data in order to login 
@@ -13,7 +12,6 @@ describe('Login / Sign out: TS-008', () => {
          await loginAPI.expectValidLogin(accountLogin, 60, "John", "Doe");
  
         });
-
 
     it('Login using invalid credentials: RT-016', async () => {
 

@@ -13,6 +13,11 @@ emails:{
   invalidEmail: {"email": "invalidemailformat"}
 },
 
+applicationMessages:{
+  weHaveSentEmail:"We sent you an email with a link to reset your password. The link will expire after 24 hours.",
+  weAlreadySentEmail:"We have already sent you an email with a link to reset your password in the last 24 hours. Please check your inbox."
+},
+
 searchTerms:{
 invalidSearchTerm: 'thisitemdoesnotexist'
 },
@@ -23,7 +28,7 @@ accountInfo:{
 },
 
 invalidAccountInfo:{
-  "email": process.env.TEST_USERNAME,
+  "email": "thisemailisnotregistered@gmail.com",
   "password": "incorrectpassword"
 },
 

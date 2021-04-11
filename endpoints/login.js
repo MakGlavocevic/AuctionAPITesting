@@ -39,11 +39,11 @@ getInvalidLogin = async () => {
 };
 
 //Using chai BDD assertions we want to expect that our login was successfull 
-expectValidLogin = async (accountLogin, var1, var2, var3) => {
+expectValidLogin = async (accountLogin, accountid, firstName, lastName) => {
 
-    expect(accountLogin.id).to.be.eq(var1);
-    expect(accountLogin.firstName).to.be.eq(var2);
-    expect(accountLogin.lastName).to.be.eq(var3);
+    expect(accountLogin.id).to.be.eq(accountid);
+    expect(accountLogin.firstName).to.be.eq(firstName);
+    expect(accountLogin.lastName).to.be.eq(lastName);
     expect(accountLogin.active).to.be.eq(true);
 
 };

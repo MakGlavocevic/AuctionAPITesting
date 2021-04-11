@@ -5,7 +5,6 @@ var searchAPI = require('../endpoints/search');
 
 describe('Search function: TS-004', () => {
 
-
      it('Search for a product that exists: RT-006', async () => {
 
         //Function to 'randomly' choose an item to search 
@@ -18,7 +17,6 @@ describe('Search function: TS-004', () => {
         await searchAPI.expectSearch(searchResultBody, searchItem);
     
      });
-
 
      it('Search for a product that does not exists: RT-007', async () => {
 

@@ -41,11 +41,11 @@ return registerinvalidres.body;
 };
 
 //Using chai BDD assertions we want to expect that our account creation was successfull 
-expectAccount = async (newAccount, var1, var2, var3) => {
+expectAccount = async (newAccount, firstName, lastName, accountEmail) => {
 
-    expect(newAccount.firstName).to.be.eq(var1);
-    expect(newAccount.lastName).to.be.eq(var2);
-    expect(newAccount.email).to.be.eq(var3);
+    expect(newAccount.firstName).to.be.eq(firstName);
+    expect(newAccount.lastName).to.be.eq(lastName);
+    expect(newAccount.email).to.be.eq(accountEmail);
     expect(newAccount.active).to.be.eq(true);
 
 }
@@ -55,5 +55,4 @@ module.exports = {
     expectAccount,
     registerInvalidAccount
     
-
 };
