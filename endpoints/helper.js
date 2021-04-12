@@ -26,9 +26,20 @@ function postInvalidBidBody (bid, productid) {
     return bidRequest
 };
 
+//Delay between tests when needed 
+function delay(interval) 
+{
+   return it('should delay', done => 
+   {
+      setTimeout(() => done(), interval)
+
+   }).timeout(interval + 100) 
+} 
+
 module.exports = {
     showMe,
     postValidBidBody,
-    postInvalidBidBody
+    postInvalidBidBody,
+    delay
     
     };

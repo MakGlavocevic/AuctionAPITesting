@@ -47,6 +47,7 @@ endpoint:{
   bids: 'bids',
   addBids:'bids/add',
   newProducts:'products/new',
+  lastProducts:'products/last',
   forgotPassword:'auth/forgot_password',
   subcategories:'subcategories'
 }

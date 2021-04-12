@@ -22,7 +22,7 @@ describe('Smoke test suit: TS-001', () => {
 
     });
    
-    it('As a signed in user place the highest bid on a item: ST-001', async () => {
+    it('As a signed in user place the highest bid on a item: 1.001', async () => {
 
          //GET method to products/featured/random to choose which product to bid on 
          productid = await randomProductAPI.getRandomProductID();

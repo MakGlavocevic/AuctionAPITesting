@@ -1,18 +1,26 @@
 var testData = require('../data/data');
 const request = require('supertest');
+var expect = require('chai').expect;
 
-//GET method to products/new to choose latest product to bid on 
-const getNewProductID = async () => {
+const getProductsNew = async () => {
 
-    const newproductres = await request(testData.apiLinks.baseURL)
-        .get(testData.endpoint.newProducts)
-        .expect(200);
-   
-   return newproductres.body[0].id;
+  const resproductnew = await request(testData.apiLinks.baseURL)
+          .get(testData.endpoint.newProducts)
+          .expect(200);
+  
+  return resproductnew;
+
+};
+
+const expectNewProducts = async (resproductnew) => {
+
+  expect(resproductnew).to.not.be.empty;
 
 };
 
 module.exports = {
-  getNewProductID
-   
-   };
+  getProductsNew,
+  expectNewProducts,
+
+
+};

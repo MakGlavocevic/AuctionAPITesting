@@ -19,9 +19,12 @@ describe('Bid on an Item: TS-003', () => {
          //GET method to products/featured/random to choose which product to bid on 
          productid = await randomProductAPI.getRandomProductID();
 
-      });
+         //Delay between tests when needed 
+         helper.delay();
 
-    it('Bid on an item while signed in with an valid bid: RT-003', async () => {
+     });
+
+    it('Bid on an item while signed in with an valid bid: 3.001', async () => {
  
          //GET method to bids/product to see what is the highest bid on the product 
          bid = await bidPriceAPI.getBid(productid);
@@ -40,7 +43,7 @@ describe('Bid on an Item: TS-003', () => {
     
     });
 
-    it('Bid on an item while signed in with an invalid bid: RT-004', async () => {
+    it('Bid on an item while signed in with an invalid bid: 3.002', async () => {
          
            //GET method to products to see what is the start price
            bid = await bidPriceAPI.getStartPrice(productid);
@@ -53,7 +56,7 @@ describe('Bid on an Item: TS-003', () => {
         
     });
 
-    it('Bid on an item while not signed in: RT-005', async () => {
+    it('Bid on an item while not signed in: 3.003', async () => {
 
            //GET method to bids/product to see what is the highest bid on the product 
            bid = await bidPriceAPI.getBid(productid);
