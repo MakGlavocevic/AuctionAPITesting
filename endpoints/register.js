@@ -48,7 +48,7 @@ const expectAccount = async (newAccount, firstName, lastName, accountEmail) => {
     expect(newAccount.email).to.be.eq(accountEmail);
     expect(newAccount.active).to.be.eq(true);
 
-}
+};
 
 module.exports = {
     registerAccount,

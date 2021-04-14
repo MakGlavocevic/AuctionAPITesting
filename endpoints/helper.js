@@ -34,7 +34,7 @@ function delay(interval)
       setTimeout(() => done(), interval)
 
    }).timeout(interval + 100) 
-} 
+};
 
 module.exports = {
     showMe,

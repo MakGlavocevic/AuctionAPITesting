@@ -2,7 +2,7 @@ var randomProductAPI = require('../endpoints/products_random');
 var loginAPI = require('../endpoints/login');
 var bidPriceAPI = require('../endpoints/get_bid_price');
 var postBidAPI = require('../endpoints/bid_post');
-var helper = require('../endpoints/helper')
+var helper = require('../endpoints/helper');
 
 
 describe('Bid on an Item: TS-003', () => {

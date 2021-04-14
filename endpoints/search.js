@@ -9,7 +9,9 @@ const searchProduct = async (searchTerm) => {
         .get(`products/search?page=0&query=${searchTerm}`)
         .expect(200);
    
-   while(searchres.body.products != null && searchres.body.products != '') {
+        var undefined
+
+   while(searchres.body.products != null && searchres.body.products != '' && searchres.body.products != undefined) {
       
     return searchres.body;
 

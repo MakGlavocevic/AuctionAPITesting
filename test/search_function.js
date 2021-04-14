@@ -13,7 +13,7 @@ describe('Search function: TS-004', () => {
      
         //Using chai BDD assertions we want to expect that our search was successfull
         await searchAPI.expectSearch(searchResultBody, searchItem);
-    
+
      });
 
      it('Search for a product that does not exists: 4.002', async () => {
