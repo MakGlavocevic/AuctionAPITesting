@@ -1,7 +1,19 @@
-Command to install packages in your testing folder - npm init
-npm i --save-dev supertest mocha chai @babel/cli @babel/core @babel/node @babel/register @babel/preset-env @babel/plugin-transform-runtime dotenv chance
+Command to install packages in your testing folder: 
 
-Add in package.json "test": "mocha --timeout 5000"
+npm install
 
-Make a .env file where you will set your own credentials
+--------------------------------------------------------------------------------------
 
+Start test with npm test 
+
+or 
+
+npm test -- --grep 'name of the test'
+
+--------------------------------------------------------------------------------------
+
+For env variables install thru npm dotenv in the root folder of the test
+
+Open Visual Studio Code, open the project folder
+
+Add a .env file and inside of it create your own enviroment variables for username and password (you need to register to the auction-abh.herokuapp.com)
