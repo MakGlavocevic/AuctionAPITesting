@@ -7,7 +7,7 @@ describe('Search function: TS-004', () => {
 
         //Function to 'randomly' choose an item to search 
         searchItem = await searchAPI.findItem();
-
+console.log(searchItem);
         //GET method to products/search to search for a query 
         searchResultBody = await searchAPI.searchProduct(searchItem);
      
