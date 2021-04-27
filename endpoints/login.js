@@ -1,13 +1,26 @@
 var testData = require('../data/data');
+var helper = require('../endpoints/helper')
 const request = require('supertest');
 var expect = require('chai').expect;
 
-//POST method to auth/login to login using valid credential and get authentication token 
+//POST method to auth/login to login using valid credential and get authentication token for smoke test
 const getToken = async () => {
+
+    const ressmoketoken = await request(testData.apiLinks.baseURL)
+            .post(testData.endpoint.login)
+            .send(testData.accountInfo)
+            .expect(200);
+    
+    return ressmoketoken.body.token;
+
+};
+
+//POST method to auth/login to login using valid credential and get authentication token for random accounts
+const getNewToken = async (email) => {
 
     const restoken = await request(testData.apiLinks.baseURL)
             .post(testData.endpoint.login)
-            .send(testData.accountInfo)
+            .send(helper.postValidAccount(email))
             .expect(200);
     
     return restoken.body.token;
@@ -50,8 +63,9 @@ const expectValidLogin = async (accountLogin, accountid, firstName, lastName) =>
 
 module.exports = {
     getToken,
+    getNewToken,
     getValidLogin,
     expectValidLogin,
-    getInvalidLogin
+    getInvalidLogin,
 
 };
