@@ -26,6 +26,17 @@ function postInvalidBidBody (bid, productid) {
     return bidRequest
 };
 
+//Valid account POST body
+function postValidAccount (email) {
+
+    const accountInfo = {
+        "email": email,
+        "password": process.env.TEST_PASSWORD
+    };
+
+    return accountInfo
+};
+
 //Delay between tests when needed 
 function delay(interval) 
 {
@@ -40,6 +51,7 @@ module.exports = {
     showMe,
     postValidBidBody,
     postInvalidBidBody,
+    postValidAccount,
     delay
     
     };

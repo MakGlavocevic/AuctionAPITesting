@@ -2,6 +2,7 @@ var randomProductAPI = require('../endpoints/products_random');
 var loginAPI = require('../endpoints/login');
 var bidPriceAPI = require('../endpoints/get_bid_price');
 var postBidAPI = require('../endpoints/bid_post');
+var deleteBidAPI = require('../endpoints/bid_delete');
 var helper = require('../endpoints/helper');
 
 
@@ -13,6 +14,14 @@ describe('Bid on an Item: TS-003', () => {
          validToken = await loginAPI.getToken();
 
       });
+
+      after( async () => {
+
+        //Teardown where we delete any bids that we send to the product
+        await deleteBidAPI.deleteUserBid(validToken, validProductId);
+
+      });
+  
 
      beforeEach( async () => {
           
@@ -28,6 +37,9 @@ describe('Bid on an Item: TS-003', () => {
  
          //GET method to bids/product to see what is the highest bid on the product 
          bid = await bidPriceAPI.getBid(productid);
+
+         //For the after hook to use the same product id 
+         validProductId = productid;
 
          //Body that we need to send 
          bidRequest = await helper.postValidBidBody(bid, productid);

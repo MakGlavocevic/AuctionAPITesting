@@ -23,7 +23,7 @@ const getBid = async (productid) => {
 const getStartPrice = async (productid) => {
 
         const startbid = await request(testData.apiLinks.baseURL)
-            .get(`products?product_id=${productid}&user_id=0`);
+            .get(`products?productId=${productid}&userId=0`);
 
         return startbid.body.startPrice;
 
@@ -34,4 +34,3 @@ module.exports = {
     getStartPrice
     
     };
-

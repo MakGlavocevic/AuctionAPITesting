@@ -1,13 +1,25 @@
 var testData = require('../data/data');
 var helper = require('../endpoints/helper')
+var loginAPI = require('../endpoints/login')
+var deleteAccountAPI = require('../endpoints/deactivate_accout')
 var registerAPI = require('../endpoints/register');
 
 describe('Create an Account: TS-002', () => {
 
+    after( async () => {
+
+        //POST method to auth/login to login using valid credential and get authentication token 
+        accountToken = await loginAPI.getNewToken(validEmail);
+
+        //POST method to auth/deactivate to deactive the randomly created account 
+        await deleteAccountAPI.deactivateAccount(accountToken);
+
+   });
+
     it('Create an account using valid information: 2.001', async () => {
 
          //Generate a random email for test purposes
-         const validEmail = testData.emails.randomEmail;
+         validEmail = testData.emails.randomEmail;
 
          //Show randomly generated email
          helper.showMe(validEmail);

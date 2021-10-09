@@ -2,6 +2,7 @@ var randomProductAPI = require('../endpoints/products_random');
 var loginAPI = require('../endpoints/login');
 var bidPriceAPI = require('../endpoints/get_bid_price');
 var postBidAPI = require('../endpoints/bid_post');
+var deleteBidAPI = require('../endpoints/bid_delete');
 var helper = require('../endpoints/helper');
 
 
@@ -15,24 +16,27 @@ describe('Smoke test suit: TS-001', () => {
 
      });
 
-     after( async () => {
+    after( async () => {
 
          //That we can see where out bid is send since the test is dynamic
          helper.showMe(postBidBody);
 
-    });
+         //Teardown where we delete any bids that we send to the product
+         await deleteBidAPI.deleteUserBid(validToken, productid);
+
+     });
    
     it('As a signed in user place the highest bid on a item: 1.001', async () => {
 
          //GET method to products/featured/random to choose which product to bid on 
          productid = await randomProductAPI.getRandomProductID();
-
+       
          //GET method to bids/product to see what is the highest bid on the product 
          bid = await bidPriceAPI.getBid(productid);
-
+     
          //Body that we need to send 
          bidRequest = await helper.postValidBidBody(bid, productid);
-        
+       
          //POST method to bids/add to send the bid to the product with an authentication token 
          postBidBody = await postBidAPI.bidPost(validToken, bidRequest);
 
@@ -41,7 +45,3 @@ describe('Smoke test suit: TS-001', () => {
 
         });
 });
-
-
-
-    

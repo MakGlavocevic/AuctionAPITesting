@@ -32,7 +32,7 @@ const searchInvalidProduct = async (searchTerm) => {
 //Function to 'randomly' choose an item to search 
 function findItem () {
 
-    items = Array('16GB DDR4 RAM', 'Gucci Bag', 'Leather Bag', 'LV Red Bag', 'Sunglasses', 'Apple Watch', 'Dell XPS', 'Boxing Gloves', 'Tennis Racquet');
+    items = Array('16GB DDR4 RAM', 'Leather Bag', 'Sunglasses', 'Apple Watch', 'Dell XPS', 'Boxing Gloves');
     item = items[Math.floor(Math.random() * items.length)];
 
     return item;
